@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title>HatRack App</title>
+
+	<link href="css/style.css" rel="stylesheet" />
+	<link href="favicon.png" rel="icon" type="image/png" />
+</head>
+<body>
+	<div><a href="index.html"><img alt="HatRack App" class="displayed" src="images/edited/HatRack_Logo.jpg" width="600" /></a></div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An app to help you wear many hats, make a habit, and build a dream.</p>
+<img src="images/purple-button-with-text.png" class = "button" id ="dailyButton" width="200" height="76"></a>
+<img src="images/green-button-with-text.png" class = "button" id ="weeklyButton" width="200" height="76"></a>
+<img src="images/blue-button-with-text.png" class = "button" id ="monthlyButton" width="200" height="76"></a>
+
+<div class="masterTooltip" title="NORMAL focus session averages 15 minutes, MINI focus session averages 5 minutes. All additional sessions with a hat average 15 minutes.">
+<div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+</div>
+
+<p>Use the buttons above to set your highest priorities and most important activities,</br>
+and HatRack<font size="1">&trade;</font> will cue you to focus on one activity at a time in manageable sessions of varying lengths.</p>
+<p>Focus on your highest priorities every day, every week, and every month, and avoid unproductive wandering and unfocused distraction.</li> 
+ </ul>
+<p>Enter your "hats" each day using the buttons above, or purchase Premium access for $5,
+and your most important priorities will be stored and available for focus sessions right away, every day.</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="YHJCXNDDBYUPU">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<script>
+
+function pasuser(form) {
+	if (form.id.value=="owentemple@gmail.com") { 
+	if (form.pass.value=="colgate1") {             
+    loadHats(user1); 
+	} else {
+	alert("Invalid Password")
+	}
+	} else {  alert("Invalid UserID")
+	}
+}
+
+
+</script>
+
+<table cellpadding="0" border="1">
+<tr><td colspan="2">
+	<center>
+	<h3>
+		<i>
+			<b>Returning Users</b>
+		</i>
+	</h3>
+	</center>
+	</td>
+</tr>
+<tr>
+	<td>
+	<h3>
+		<i>
+			<b>UserID:</b>
+		</i>
+	</h3>
+	</td>
+	<td>
+		<form name="login"><input name="id" type="text">
+	</td>
+</tr>
+<tr>
+	<td>
+		<h3>
+			<i>
+				<b>Password:</b>
+			</i>
+		</h3>
+	</td>
+	<td><input name="pass" type="password">
+	</td>
+</tr>
+<tr>
+	<td>
+		<center>
+			<input type="button" value="Login" onClick="pasuser(this.form)">
+		</center>
+	</td>
+	<td>
+		<center>
+			<input type="Reset">
+		</form>
+	</td>
+</tr>
+</table> 
+<h1>Today's Score</h1>
+<p id="score">0</p>
+<br>
+<h1 id="logTitle">Log</h1> 
+<p id="log"></p>
+<h2>Daily Hats</h2>
+	<ul id="daily">
+	</ul>
+<h2>Weekly Hats</h2>
+	<ul id="weekly">
+	</ul>
+<h2>Monthly Hats</h2>
+	<ul id="monthly">
+	</ul>
+
+
+
+
+
+
+
+</br>
+ <div id="priorities">
+ <h2>Priorities</h2>
+    <div class="note">Rules: no more than 25 hats per rack.</div>
+    <div id="main" data-bind="foreach: tables">
+        <div class="table">
+            <span data-bind="text: students.id"></span>
+            <div class="seats" data-bind="sortable: { data: students, allowDrop: $root.isTableFull }">
+                <div class="student" data-bind="text: name"></div>
+            </div>
+            <div class="count" data-bind="text: students().length + '/' + $root.maximumStudents, css: { ready: students().length < $root.maximumStudents }"></div>
+        </div>
+    </div>
+
+    <div id="extra">
+        <div>Available Hats</div>
+        <div class="new" data-bind="sortable: availableStudents">
+            <div class="student" data-bind="text: name"></div>
+        </div>
+    </div>
+
+    <div id="message" data-bind="flash: lastAction"></div>
+    <div id="error" data-bind="flash: lastError"></div>
+
+    <div id="master">
+        <div>Master List</div>
+        <table>
+            <tr>
+                <th>Hooks</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th>11</th>
+                <th>12</th>
+                <th>13</th>                                
+
+            </tr>
+            <tbody data-bind="foreach: tables">
+                <tr>
+                    <th data-bind="text: students.id"></th>
+                    <!-- ko foreach: students -->
+                    <td data-bind="text: name"></td>
+                    <!-- /ko -->
+                </tr>
+            </tbody>
+            <tr>
+                <th>Available</th>
+                <!-- ko foreach: availableStudents -->
+                <td data-bind="text: name"></td>
+                <!-- /ko -->
+            </tr>
+        </table>
+    </div>
+</div>
+
+</br>
+
+
+
+
+
+
+
+<h5>&copy; 2015 Owen Temple</h5>
+</div>
+<script src="js/jquery-2.1.4.min.js"></script>
+
+
+
+
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type='text/javascript' src="js/knockout-3.3.0.js"></script>
+    <script type='text/javascript' src="js/knockout-sortable.min.js"></script>
+	<script src="js/game.js"></script>
+<!--Only user for sliders <script src="js/index.js"></script>-->
+</body>
+</html>

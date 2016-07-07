@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title>HatRack App</title>
+
+	<link href="css/style.css" rel="stylesheet" />
+	<link href="favicon.png" rel="icon" type="image/png" />
+</head>
+<header>
+<body>
+	<div class="nav">
+	<ul>
+		<li><a href="http://www.hatrackapp.com">Home</a></li>
+		<li><a href="http://blog.hatrackapp.com">Blog</a></li>
+		<li><a href="https://www.facebook.com/HatRack-708991959244989">Facebook</a></li>
+		<li><a href="https://www.twitter.com/HatRack_App">Twitter</a></li>
+		<li><a href="http://www.hatrackapp.com/contact.html">Contact</a></li>
+	</ul>
+</div>
+</header>
+	<div><a href="index.html"><img alt="HatRack App" class="displayed" src="images/edited/hatrack-header.jpg" width="700" /></a></div>
+<p>An app to help you wear many hats, make a habit, and build a dream.</p>
+<img src="images/purple-button-with-text.png" class = "button" id ="dailyButton" width="200" height="76"></a>
+<img src="images/green-button-with-text.png" class = "button" id ="weeklyButton" width="200" height="76"></a>
+<img src="images/blue-button-with-text.png" class = "button" id ="monthlyButton" width="200" height="76"></a>
+
+<div class="masterTooltip" title="NORMAL focus session averages 15 minutes, MINI focus session averages 5 minutes. All additional sessions with a hat average 15 minutes.">
+<div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+</div>
+
+<p>Use the buttons above to set your highest priorities and most important activities,</br>
+and HatRack<font size="1">&trade;</font> will cue you to focus on one activity at a time in manageable sessions of varying lengths.</p>
+<p>Focus on your highest priorities every day, every week, and every month,</br> and avoid unproductive wandering and unfocused distraction.</li> 
+ </ul>
+<p>Enter your "hats" each day using the buttons above, or purchase Premium access for $5,</br>
+and your most important priorities will be stored and available for focus sessions right away, every day.</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="YHJCXNDDBYUPU">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<script>
+
+
+function pasuser(form) {
+	if (form.id.value=="owentemple@gmail.com" & form.pass.value=="colgate1") {            
+ 	    loadHats(user1);
+ 	    }
+ 	else if (form.id.value=="owentemple@gmail.com" & form.pass.value=="colgate2") {
+ 	    loadHats(user2);
+ 	    } 
+        else {
+	    alert("Invalid UserID or Password");
+	}
+}
+
+
+
+</script>
+
+<table id="login" cellpadding="0" border="1" align="center">
+<tr><td colspan="2">
+	<center>
+	<h3>
+		<i>
+			<b>Returning Users</b>
+		</i>
+	</h3>
+	</center>
+	</td>
+</tr>
+<tr>
+	<td>
+	<h3>
+		<i>
+			<b>UserID:</b>
+		</i>
+	</h3>
+	</td>
+	<td>
+		<form name="login"><input name="id" type="text">
+	</td>
+</tr>
+<tr>
+	<td>
+		<h3>
+			<i>
+				<b>Password:</b>
+			</i>
+		</h3>
+	</td>
+	<td><input name="pass" type="password">
+	</td>
+</tr>
+<tr>
+	<td>
+		<center>
+			<input type="button" value="Login" onClick="pasuser(this.form)">
+		</center>
+	</td>
+	<td>
+		<center>
+			<input type="Reset">
+		</form>
+	</td>
+</tr>
+</table> 
+
+<h1>Today's Score</h1>
+<p id="score">0</p>
+<br>
+<h1 id="logTitle">Log</h1> 
+<p id="log"></p>
+<h2>Daily Hats</h2>
+	<ul id="daily">
+	</ul>
+<h2>Weekly Hats</h2>
+	<ul id="weekly">
+	</ul>
+<h2>Monthly Hats</h2>
+	<ul id="monthly">
+	</ul>
+
+
+
+
+
+
+
+</br>
+<div id="priorities" align="center">
+ <h2>Priorities</h2>
+    <div class="note">Rules: no more than 25 hats per rack.</div>
+<div id="table-container-main">
+    <div id="main" data-bind="foreach: tables">
+        <div class="table" align="center">
+            <span data-bind="text: students.id"></span>
+            <div class="seats" data-bind="sortable: { data: students, allowDrop: $root.isTableFull }">
+                <div class="student" data-bind="text: name"></div>
+            </div>
+            <div class="count" data-bind="text: students().length + '/' + $root.maximumStudents, css: { ready: students().length < $root.maximumStudents }"></div>
+        </div>
+    </div>
+
+    <div id="extra">
+        <div>Available Hats</div>
+        <div class="new" data-bind="sortable: availableStudents">
+            <div class="student" data-bind="text: name"></div>
+        </div>
+    </div>
+
+    <div id="message" data-bind="flash: lastAction"></div>
+    <div id="error" data-bind="flash: lastError"></div>
+</div>
+    <div id="master">
+        <div>Master List</div>
+        <table>
+            <tr>
+                <th>Hooks</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th>11</th>
+                <th>12</th>
+                <th>13</th>                                
+
+            </tr>
+            <tbody data-bind="foreach: tables">
+                <tr>
+                    <th data-bind="text: students.id"></th>
+                    <!-- ko foreach: students -->
+                    <td data-bind="text: name"></td>
+                    <!-- /ko -->
+                </tr>
+            </tbody>
+            <tr>
+                <th>Available</th>
+                <!-- ko foreach: availableStudents -->
+                <td data-bind="text: name"></td>
+                <!-- /ko -->
+            </tr>
+        </table>
+    </div>
+
+</div>
+</br>
+
+
+
+
+<p></p>
+
+<h2>Tokens</h2>
+<p>When you've worn the hat for the day, move the token to the right.</p>
+<div id="habit1" class="habit">
+<p></p>
+
+
+
+<p></p>
+
+<div class="draggable-droppable">
+<div class="box-1"><span><img alt="Typewriter" title="Writing" height="125" src="images/edited/red-typewriter.jpg" width="145" /></span></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-2"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-3"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-4"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-5"></div>
+</div>
+</div>
+<!--Next habit-->
+
+<div class="habit">
+<p></p>
+
+
+
+<p></p>
+
+<div class="draggable-droppable">
+<div class="box-1"><span><img alt="Turntable" title="Listening" height="125" src="images/edited/turntable.jpg" width="145" /></span></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-2"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-3"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-4"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-5"></div>
+</div>
+</div>
+<!--Next habit-->
+
+<div id="habit2" class="habit">
+<p></p>
+
+
+
+<p></p>
+
+<div class="draggable-droppable">
+<div class="box-1"><span><img alt="cup" title="Teaching" height="125" src="images/edited/cup.jpg" width="145" /></span></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-2"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-3"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-4"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-5"></div>
+</div>
+</div>
+<!--Next habit-->
+
+<div id="habit3" class="habit">
+<p></p>
+
+
+
+<p></p>
+
+<div class="draggable-droppable">
+<div class="box-1"><span><img alt="black book" title="Reading: Fiction/Poetry" height="125" src="images/edited/black-book.jpg" width="145" /></span></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-2"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-3"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-4"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-5"></div>
+</div>
+</div>
+<!--Next habit-->
+
+<div id="habit4" class="habit">
+<p></p>
+
+
+
+
+<p></p>
+
+<div class="draggable-droppable">
+<div class="box-1"><span><img alt="glove" title="Communicating" height="125" src="images/edited/glove.jpg" width="145" /></span></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-2"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-3"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-4"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-5"></div>
+</div>
+</div>
+
+
+<div id="habit5" class="habit">
+<p></p>
+
+
+<p></p>
+
+<div class="draggable-droppable">
+<div class="box-1"><span><img alt="guitar" title="Performing" height="125" src="images/edited/guitar.jpg" width="145" /></span></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-2"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-3"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-4"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-5"></div>
+</div>
+</div>
+<!--Next habit-->
+
+<div id="habit6" class="habit">
+<p></p>
+
+
+
+<p></p>
+
+<div class="draggable-droppable">
+<div class="box-1"><span><img alt="compass" title="Designing: Startups/Experiment" height="125" src="images/edited/compass.jpg" width="145" /></span></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-2"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-3"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-4"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-5"></div>
+</div>
+</div>
+<!--Next habit-->
+
+<div id="habit7" class="habit">
+<p></p>
+
+
+
+<p></p>
+
+<div class="draggable-droppable">
+<div class="box-1"><span><img alt="red book" title="Reading: Startups" height="125" src="images/edited/red-book.jpg" width="145" /></span></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-2"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-3"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-4"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-5"></div>
+</div>
+</div>
+<!--Next habit-->
+
+<div id="habit8" class="habit">
+<p></p>
+
+
+<p></p>
+
+<div class="draggable-droppable">
+<div class="box-1"><span><img alt="magnifying glass" title="Editing: Nonfiction" height="125" src="images/edited/magnifying-glass.jpg" width="145" /></span></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-2"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-3"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-4"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-5"></div>
+</div>
+</div>
+
+
+<div id="habit9" class="habit">
+<p></p>
+
+
+
+
+<p></p>
+
+<div class="draggable-droppable">
+<div class="box-1"><span><img alt="laptop" title="Coding" height="125" src="images/edited/laptop.jpg" width="145" /></span></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-2"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-3"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-4"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-5"></div>
+</div>
+</div>
+<!--Next habit-->
+
+<div id="habit10" class="habit">
+<p></p>
+
+
+
+<p></p>
+
+<div class="draggable-droppable">
+<div class="box-1"><span><img alt="trophy" title="Running" height="125" src="images/edited/trophy.jpg" width="145" /></span></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-2"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-3"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-4"></div>
+</div>
+
+<div class="draggable-droppable">
+<div class="box-5"></div>
+</div>
+</div>
+<!--Next habit-->
+
+<p></p>
+
+
+
+
+
+
+<p></p>
+
+<p></p>
+
+<div>
+<h4>&copy; 2015 HatRack, LLC</h4>
+</div>
+<script src="js/jquery-2.1.4.min.js"></script>
+   <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type='text/javascript' src="js/knockout-3.3.0.js"></script>
+    <script type='text/javascript' src="js/knockout-sortable.min.js"></script>
+    <script src="js/index.js"></script>
+	<script src="js/game.js"></script>
+
+</body>
+</html>
