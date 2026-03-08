@@ -1,0 +1,11 @@
+{
+  "name": "hatrack-app",
+  "version": "1.0.0",
+  "description": "The first version of HatRack™ — archived",
+  "scripts": {
+    "start": "serve -s . -l $PORT"
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
+  }
+}
